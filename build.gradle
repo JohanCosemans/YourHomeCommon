@@ -1,0 +1,22 @@
+apply plugin: "java"
+apply plugin: "eclipse"
+
+archivesBaseName = "YourHome-Common"
+version = "1.0-SNAPSHOT" 
+
+ext {
+}
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+}
+
+dependencies {
+   compile  "org.json:json:20151123"
+   compile  "org.apache.commons:commons-lang3:3.4"
+   compile  "commons-logging:commons-logging:1.2"
+   compile  "log4j:log4j:1.2.17"
+} 
