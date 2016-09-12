@@ -1,3 +1,29 @@
+/*-
+ * Copyright (c) 2016 Coteq, Johan Cosemans
+ * All rights reserved.
+ *
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
 package net.yourhome.common.net.messagestructures.http;
 
 import java.sql.ResultSet;
@@ -20,197 +46,233 @@ public class HttpCommand {
 
 	protected Map<String, String> additionalHeaders;
 
-	public HttpCommand() { }
-	
+	public HttpCommand() {
+	}
+
 	public JSONObject serialize() {
 		JSONObject json = new JSONObject();
-		json.put("id", id);
-		json.put("parentNodeId", parentNodeId);
-		json.put("name", name);
-		json.put("description",description);
-		json.put("url", url);
-		json.put("httpMethod", httpMethod);
-		json.put("messageType", messageType);
-		json.put("messageBody", messageBody);
-		json.put("additionalHeaders", additionalHeaders);
+		json.put("id", this.id);
+		json.put("parentNodeId", this.parentNodeId);
+		json.put("name", this.name);
+		json.put("description", this.description);
+		json.put("url", this.url);
+		json.put("httpMethod", this.httpMethod);
+		json.put("messageType", this.messageType);
+		json.put("messageBody", this.messageBody);
+		json.put("additionalHeaders", this.additionalHeaders);
 		return json;
 	}
-	
- 	public HttpCommand(ResultSet result) throws SQLException {
-		id = result.getInt("id");
+
+	public HttpCommand(ResultSet result) throws SQLException {
+		this.id = result.getInt("id");
 		try {
-		parentNodeId = result.getInt("parentNodeId");
-		}catch(SQLException e) {}
+			this.parentNodeId = result.getInt("parentNodeId");
+		} catch (SQLException e) {
+		}
 		try {
-		name = result.getString("name");
-		}catch(SQLException e) {}
+			this.name = result.getString("name");
+		} catch (SQLException e) {
+		}
 		try {
-		description = result.getString("description");
-		}catch(SQLException e) {}
-		url = result.getString("url");
-		httpMethod = result.getString("httpMethod");
+			this.description = result.getString("description");
+		} catch (SQLException e) {
+		}
+		this.url = result.getString("url");
+		this.httpMethod = result.getString("httpMethod");
 		try {
-		messageType = result.getString("messageType");
-		}catch(SQLException e) {}
+			this.messageType = result.getString("messageType");
+		} catch (SQLException e) {
+		}
 		try {
-		messageBody = result.getString("messageBody");
-		}catch(SQLException e) {}
-		
-		for(int i=1;i<5;i++) {
+			this.messageBody = result.getString("messageBody");
+		} catch (SQLException e) {
+		}
+
+		for (int i = 1; i < 5; i++) {
 			try {
-				String headerKey = result.getString("header"+i+"Key");
-				String headerValue = result.getString("header"+i+"Value");
-				if(headerKey != null || headerValue != null) {
-					addHeader(headerKey, headerValue);
+				String headerKey = result.getString("header" + i + "Key");
+				String headerValue = result.getString("header" + i + "Value");
+				if (headerKey != null || headerValue != null) {
+					this.addHeader(headerKey, headerValue);
 				}
-			}catch(SQLException e) {}
+			} catch (SQLException e) {
+			}
 		}
 	}
-	
+
 	public HttpCommand(JSONObject result) throws JSONException {
 		try {
-		id = result.getInt("id");
-		}catch(JSONException e) {}
+			this.id = result.getInt("id");
+		} catch (JSONException e) {
+		}
 		try {
-		parentNodeId = result.getInt("parentNodeId");
-		}catch(JSONException e) {}
+			this.parentNodeId = result.getInt("parentNodeId");
+		} catch (JSONException e) {
+		}
 		try {
-		name = result.getString("name");
-		}catch(JSONException e) {}
+			this.name = result.getString("name");
+		} catch (JSONException e) {
+		}
 		try {
-		description = result.getString("description");
-		}catch(JSONException e) {}
-		url = result.getString("url");
-		httpMethod = result.getString("httpMethod");
+			this.description = result.getString("description");
+		} catch (JSONException e) {
+		}
+		this.url = result.getString("url");
+		this.httpMethod = result.getString("httpMethod");
 		try {
-		messageType = result.getString("messageType");
-		}catch(JSONException e) {}
+			this.messageType = result.getString("messageType");
+		} catch (JSONException e) {
+		}
 		try {
-		messageBody = result.getString("messageBody");
-		}catch(JSONException e) {}
+			this.messageBody = result.getString("messageBody");
+		} catch (JSONException e) {
+		}
 
-		additionalHeaders = new HashMap<String,String>();
+		this.additionalHeaders = new HashMap<String, String>();
 		JSONObject additionalHeadersObj = result.getJSONObject("additionalHeaders");
-		if(additionalHeadersObj != null) {
+		if (additionalHeadersObj != null) {
 			String[] names = JSONObject.getNames(additionalHeadersObj);
-			if(names != null && names.length > 0) {
-				for(String key : names) {
-					additionalHeaders.put(key, additionalHeadersObj.getString(key));
+			if (names != null && names.length > 0) {
+				for (String key : names) {
+					this.additionalHeaders.put(key, additionalHeadersObj.getString(key));
 				}
 			}
 		}
 	}
-	
+
 	public void addHeader(String key, String value) {
-		
-		if(additionalHeaders == null) {
-			additionalHeaders = new HashMap<String,String>();
+
+		if (this.additionalHeaders == null) {
+			this.additionalHeaders = new HashMap<String, String>();
 		}
-		
-		if(additionalHeaders.containsKey(key)) {
-			additionalHeaders.remove(key);
+
+		if (this.additionalHeaders.containsKey(key)) {
+			this.additionalHeaders.remove(key);
 		}
-		
-		additionalHeaders.put(key, value);
-		
+
+		this.additionalHeaders.put(key, value);
+
 	}
-	
-	public Map<String,String> getHeaders() {
+
+	public Map<String, String> getHeaders() {
 		return this.additionalHeaders;
 	}
-	
+
 	/**
 	 * @return the id
 	 */
 	public int getId() {
-		return id;
+		return this.id;
 	}
+
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	/**
 	 * @return the parentNodeId
 	 */
 	public int getParentNodeId() {
-		return parentNodeId;
+		return this.parentNodeId;
 	}
+
 	/**
-	 * @param parentNodeId the parentNodeId to set
+	 * @param parentNodeId
+	 *            the parentNodeId to set
 	 */
 	public void setParentNodeId(int parentNodeId) {
 		this.parentNodeId = parentNodeId;
 	}
+
 	/**
 	 * @return the name
 	 */
 	public String getName() {
-		return name;
+		return this.name;
 	}
+
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * @return the description
 	 */
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
+
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	/**
 	 * @return the url
 	 */
 	public String getUrl() {
-		return url;
+		return this.url;
 	}
+
 	/**
-	 * @param url the url to set
+	 * @param url
+	 *            the url to set
 	 */
 	public void setUrl(String url) {
 		this.url = url;
 	}
+
 	/**
 	 * @return the httpMethod
 	 */
 	public String getHttpMethod() {
-		return httpMethod;
+		return this.httpMethod;
 	}
+
 	/**
-	 * @param httpMethod the httpMethod to set
+	 * @param httpMethod
+	 *            the httpMethod to set
 	 */
 	public void setHttpMethod(String httpMethod) {
 		this.httpMethod = httpMethod;
 	}
+
 	/**
 	 * @return the messageType
 	 */
 	public String getMessageType() {
-		return messageType;
+		return this.messageType;
 	}
+
 	/**
-	 * @param messageType the messageType to set
+	 * @param messageType
+	 *            the messageType to set
 	 */
 	public void setMessageType(String messageType) {
 		this.messageType = messageType;
 	}
+
 	/**
 	 * @return the messageBody
 	 */
 	public String getMessageBody() {
-		return messageBody;
+		return this.messageBody;
 	}
+
 	/**
-	 * @param messageBody the messageBody to set
+	 * @param messageBody
+	 *            the messageBody to set
 	 */
 	public void setMessageBody(String messageBody) {
 		this.messageBody = messageBody;
