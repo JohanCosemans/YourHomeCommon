@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path="src/main/java">
+		<attributes>
+			<attribute name="FROM_GRADLE_MODEL" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="output" path="bin"/>
-	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
-	<classpathentry sourcepath="C:/Users/Johan/.gradle/caches/modules-2/files-2.1/org.json/json/20151123/9c179a1becb79c6af729c89f7b212b1cb5e68da3/json-20151123-sources.jar" kind="lib" path="C:/Users/Johan/.gradle/caches/modules-2/files-2.1/org.json/json/20151123/1675d5c1142000dedd6627a73af26a8b885ef0e1/json-20151123.jar"/>
-	<classpathentry sourcepath="C:/Users/Johan/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.4/b49dafc9cfef24c356827f322e773e7c26725dd2/commons-lang3-3.4-sources.jar" kind="lib" path="C:/Users/Johan/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.4/5fe28b9518e58819180a43a850fbc0dd24b7c050/commons-lang3-3.4.jar"/>
-	<classpathentry sourcepath="C:/Users/Johan/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/ecf26c7507d67782a3bbd148d170b31dfad001aa/commons-logging-1.2-sources.jar" kind="lib" path="C:/Users/Johan/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar"/>
-	<classpathentry sourcepath="C:/Users/Johan/.gradle/caches/modules-2/files-2.1/log4j/log4j/1.2.17/677abe279b68c5e7490d6d50c6951376238d7d3e/log4j-1.2.17-sources.jar" kind="lib" path="C:/Users/Johan/.gradle/caches/modules-2/files-2.1/log4j/log4j/1.2.17/5af35056b4d257e4b64b9e8069c0746e8b08629f/log4j-1.2.17.jar"/>
 </classpath>

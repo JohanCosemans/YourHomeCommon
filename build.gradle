@@ -3,6 +3,8 @@ apply plugin: "eclipse"
 
 archivesBaseName = "YourHome-Common"
 version = "1.0-SNAPSHOT" 
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
 
 ext {
 }
