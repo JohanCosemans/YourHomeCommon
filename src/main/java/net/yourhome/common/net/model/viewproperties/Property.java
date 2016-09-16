@@ -32,9 +32,10 @@ import org.json.JSONObject;
 import net.yourhome.common.base.enums.PropertyTypes;
 
 public class Property {
+
 	private PropertyTypes type;
 	private String key;
-	private String value;
+	private Object value;
 	private String description;
 
 	public Property(JSONObject json) throws JSONException {
@@ -44,7 +45,7 @@ public class Property {
 		this.description = json.getString("description");
 	}
 
-	public Property(PropertyTypes type, String key, String description, String value) {
+	public Property(PropertyTypes type, String key, String description, Object value) {
 		this.type = type;
 		this.key = key;
 		this.description = description;
@@ -100,7 +101,7 @@ public class Property {
 	 * @return the value
 	 */
 	public String getValue() {
-		return this.value;
+		return this.value == null ? null : this.value.toString();
 	}
 
 	/**
