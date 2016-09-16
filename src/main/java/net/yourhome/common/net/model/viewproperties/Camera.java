@@ -31,8 +31,9 @@ import net.yourhome.common.base.enums.ViewTypes;
 
 public class Camera extends View {
 
-	public static String LIVE_STREAM = "live_stream";
-	public static String SHOW_REFRESH_BUTTON = "show_refresh_button";
+	// public static String LIVE_STREAM = "live_stream";
+	public static String HIDE_REFRESH_BUTTON = "hide_refresh_button";
+	public static String HIDE_LOADING_BUTTON = "hide_loading_button";
 	public static String REFRESH_DELAY_S = "refresh_delay_s";
 
 	public Camera() {
@@ -49,9 +50,12 @@ public class Camera extends View {
 
 	@Override
 	public void addProperties() {
-		this.properties.put(Camera.LIVE_STREAM, new Property(PropertyTypes.BOOLEAN, Camera.LIVE_STREAM, "Live Stream (instead of snapshot)", null));
+		// this.properties.put(Camera.LIVE_STREAM, new
+		// Property(PropertyTypes.BOOLEAN, Camera.LIVE_STREAM, "Live Stream
+		// (instead of snapshot)", null));
 		this.properties.put(Camera.REFRESH_DELAY_S, new Property(PropertyTypes.DOUBLE, Camera.REFRESH_DELAY_S, "Refresh Delay (seconds)", 600.0));
-		this.properties.put(Camera.SHOW_REFRESH_BUTTON, new Property(PropertyTypes.BOOLEAN, Camera.SHOW_REFRESH_BUTTON, "Show Refresh icon", true));
+		this.properties.put(Camera.HIDE_REFRESH_BUTTON, new Property(PropertyTypes.BOOLEAN, Camera.HIDE_REFRESH_BUTTON, "Hide Loading icon", false));
+		this.properties.put(Camera.HIDE_LOADING_BUTTON, new Property(PropertyTypes.BOOLEAN, Camera.HIDE_LOADING_BUTTON, "Hide Refresh icon", false));
 
 	}
 
