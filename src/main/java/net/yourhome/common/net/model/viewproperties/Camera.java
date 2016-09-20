@@ -12,7 +12,7 @@
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
  *
- * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * THIS SOFTWARE IS PROVIDED BY COTEQ AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
  * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
  * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
@@ -44,8 +44,11 @@ public class Camera extends View {
 		super(id, viewType, icon, draggable, title);
 	}
 
-	public Camera(String id, String icon, String draggable, String title) {
+	public Camera(String id, String icon, String draggable, String title, Integer refreshDelay, Boolean hideRefreshButton, Boolean hideLoadingIcon) {
 		this(id, ViewTypes.CAMERA, icon, draggable, title);
+		this.setAttributeValue(HIDE_REFRESH_BUTTON, refreshDelay);
+		this.setAttributeValue(HIDE_LOADING_ICON, hideLoadingIcon);
+		this.setAttributeValue(REFRESH_DELAY_S, hideLoadingIcon);
 	}
 
 	@Override

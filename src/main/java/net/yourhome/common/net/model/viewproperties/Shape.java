@@ -12,7 +12,7 @@
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
  *
- * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * THIS SOFTWARE IS PROVIDED BY COTEQ AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
  * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
  * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
@@ -33,6 +33,7 @@ public class Shape extends View {
 
 	public static String COLOR = "color";
 	public static String CORNER_RADIUS = "corner_radius";
+	public static String PROTECTED = "protected";
 
 	public Shape() {
 		super(ViewTypes.SHAPE);
@@ -42,16 +43,18 @@ public class Shape extends View {
 		super(id, viewType, icon, draggable, title);
 	}
 
-	public Shape(String id, String icon, String draggable, String title, String color, Double radius) {
+	public Shape(String id, String icon, String draggable, String title, String color, Double radius, Boolean protectedShape) {
 		this(id, ViewTypes.SHAPE, icon, draggable, title);
 		this.setAttributeValue(Shape.COLOR, color);
 		this.setAttributeValue(Shape.CORNER_RADIUS, radius + "");
+		this.setAttributeValue(Shape.PROTECTED, protectedShape);
 	}
 
 	@Override
 	public void addProperties() {
 		this.properties.put(Shape.COLOR, new Property(PropertyTypes.COLOR, Shape.COLOR, "Color", null));
 		this.properties.put(Shape.CORNER_RADIUS, new Property(PropertyTypes.DOUBLE, Shape.CORNER_RADIUS, "Corner Radius", null));
+		this.properties.put(Shape.PROTECTED, new Property(PropertyTypes.BOOLEAN, Shape.PROTECTED, "Protected", false));
 
 	}
 }

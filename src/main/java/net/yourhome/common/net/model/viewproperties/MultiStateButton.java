@@ -12,7 +12,7 @@
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
  *
- * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * THIS SOFTWARE IS PROVIDED BY COTEQ AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
  * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
  * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
@@ -31,16 +31,19 @@ import net.yourhome.common.base.enums.ViewTypes;
 
 public class MultiStateButton extends View {
 
+	public static String PROTECTED = "protected";
+
 	public MultiStateButton() {
 		super(ViewTypes.MULTI_STATE_BUTTON);
 	}
 
-	protected MultiStateButton(String id, ViewTypes viewType, String icon, String draggable, String title) {
+	protected MultiStateButton(String id, ViewTypes viewType, String icon, String draggable, String title, Boolean protectedImage) {
 		super(id, viewType, icon, draggable, title);
 	}
 
-	public MultiStateButton(String id, String icon, String draggable, String title) {
-		this(id, ViewTypes.MULTI_STATE_BUTTON, icon, draggable, title);
+	public MultiStateButton(String id, String icon, String draggable, String title, Boolean protectedImage) {
+		this(id, ViewTypes.MULTI_STATE_BUTTON, icon, draggable, title, protectedImage);
+		this.setAttributeValue(PROTECTED, protectedImage);
 	}
 
 	public void addState(String stateKey, String description, String value) {
@@ -49,7 +52,6 @@ public class MultiStateButton extends View {
 
 	@Override
 	public void addProperties() {
-		// TODO Auto-generated method stub
-
+		this.properties.put(PROTECTED, new Property(PropertyTypes.IMAGE, PROTECTED, "Protected", null));
 	}
 }

@@ -12,7 +12,7 @@
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
  *
- * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * THIS SOFTWARE IS PROVIDED BY COTEQ AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
  * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
  * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
@@ -30,6 +30,9 @@ import net.yourhome.common.base.enums.PropertyTypes;
 import net.yourhome.common.base.enums.ViewTypes;
 
 public class Heating extends View {
+	public static String NORMAL = "normalImageSrc";
+	public static String COLD = "coldImageSrc";
+	public static String HOT = "hotImageSrc";
 
 	public Heating() {
 		super(ViewTypes.HEATING);
@@ -41,17 +44,17 @@ public class Heating extends View {
 
 	public Heating(String id, String icon, String draggable, String title, String normalImageSrc, String coldImageSrc, String hotImageSrc) {
 		this(id, ViewTypes.HEATING, icon, draggable, title);
-		this.setAttributeValue("normalImageSrc", normalImageSrc);
-		this.setAttributeValue("coldImageSrc", coldImageSrc);
-		this.setAttributeValue("hotImageSrc", hotImageSrc);
+		this.setAttributeValue(NORMAL, normalImageSrc);
+		this.setAttributeValue(COLD, coldImageSrc);
+		this.setAttributeValue(COLD, hotImageSrc);
 	}
 
 	@Override
 	public void addProperties() {
 
-		this.properties.put("normalImageSrc", new Property(PropertyTypes.IMAGE, "normalImageSrc", "Normal Image", null));
-		this.properties.put("coldImageSrc", new Property(PropertyTypes.IMAGE, "coldImageSrc", "Cold Image", null));
-		this.properties.put("hotImageSrc", new Property(PropertyTypes.IMAGE, "hotImageSrc", "Hot Image", null));
+		this.properties.put(NORMAL, new Property(PropertyTypes.IMAGE, NORMAL, "Normal Image", null));
+		this.properties.put(COLD, new Property(PropertyTypes.IMAGE, COLD, "Cold Image", null));
+		this.properties.put(HOT, new Property(PropertyTypes.IMAGE, HOT, "Hot Image", null));
 
 	}
 }

@@ -12,7 +12,7 @@
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
  *
- * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * THIS SOFTWARE IS PROVIDED BY COTEQ AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
  * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
  * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
@@ -31,6 +31,8 @@ import net.yourhome.common.base.enums.ViewTypes;
 
 public class Image extends View {
 
+	public static String IMAGE_SOURCE = "imageSrc";
+
 	public Image() {
 		super(ViewTypes.IMAGE);
 	}
@@ -45,17 +47,17 @@ public class Image extends View {
 
 	public Image(String id, String icon, String draggable, String title, String imageSrc) {
 		this(id, ViewTypes.IMAGE, icon, draggable, title);
-		this.setAttributeValue("imageSrc", imageSrc);
+		this.setAttributeValue(IMAGE_SOURCE, imageSrc);
 	}
 
 	public Image(String id, String image, String title) {
 		this(id, image, image, title, image);
-		this.setAttributeValue("imageSrc", image);
+		this.setAttributeValue(IMAGE_SOURCE, image);
 	}
 
 	@Override
 	public void addProperties() {
-		this.properties.put("imageSrc", new Property(PropertyTypes.IMAGE, "imageSrc", "Image", null));
+		this.properties.put(IMAGE_SOURCE, new Property(PropertyTypes.IMAGE, IMAGE_SOURCE, "Image", null));
 
 	}
 
