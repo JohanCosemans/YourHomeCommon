@@ -7,8 +7,8 @@ import net.yourhome.common.net.messagestructures.JSONMessage;
 
 public class ProtectedJSONMessage extends JSONMessage {
 
-	private boolean isProtected = false;
-	private String protectionCode = "";
+	public boolean isProtected = false;
+	public String protectionCode = "";
 
 	public ProtectedJSONMessage() {
 		super();
@@ -40,13 +40,4 @@ public class ProtectedJSONMessage extends JSONMessage {
 	public ProtectedJSONMessage(JSONMessage message) {
 		super();
 	}
-
-	public boolean isProtected() {
-		return isProtected;
-	}
-
-	public void setProtected(boolean isProtected) {
-		this.isProtected = isProtected;
-	}
-
 }
