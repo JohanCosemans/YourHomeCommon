@@ -24,45 +24,8 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package net.yourhome.common.net.messagestructures.radio;
+package net.yourhome.common.base.enums;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.yourhome.common.base.enums.ControllerTypes;
-import net.yourhome.common.base.enums.MessageTypes;
-import net.yourhome.common.net.messagestructures.JSONMessage;
-import net.yourhome.common.net.messagestructures.general.ProtectedJSONMessage;
-
-public class RadioOnOffMessage extends ProtectedJSONMessage {
-
-	public boolean status; // true = ON or false = OFF
-	public boolean stopSharing = false;
-
-	public RadioOnOffMessage() {
-		this.type = MessageTypes.RadioOnOff;
-		this.controlIdentifiers.setControllerIdentifier(ControllerTypes.RADIO);
-	}
-
-	public RadioOnOffMessage(JSONMessage message) throws JSONException {
-		super(message);
-	}
-
-	public RadioOnOffMessage(JSONObject object) throws JSONException {
-		super(object);
-		this.status = object.getBoolean("status");
-	}
-
-	@Override
-	public JSONObject serialize() {
-
-		JSONObject returnObject = super.serialize();
-		try {
-			returnObject.accumulate("status", this.status);
-		} catch (JSONException e) {
-			JSONMessage.log.error("Exception occured: ", e);
-		}
-		return returnObject;
-
-	}
+public enum MessageLevels {
+	INFORMATION, WARNING, ERROR
 }

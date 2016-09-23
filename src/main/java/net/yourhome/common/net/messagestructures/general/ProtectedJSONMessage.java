@@ -15,12 +15,11 @@ public class ProtectedJSONMessage extends JSONMessage {
 	}
 
 	public ProtectedJSONMessage(JSONObject jsonObject) throws JSONException {
-		super();
+		super(jsonObject);
 		try {
 			this.isProtected = jsonObject.getBoolean("protected");
 			this.protectionCode = jsonObject.getString("protectionCode");
 		} catch (JSONException e) {
-			this.isProtected = false;
 		}
 	}
 
@@ -30,6 +29,7 @@ public class ProtectedJSONMessage extends JSONMessage {
 
 		try {
 			jsonObj.accumulate("protected", isProtected);
+			jsonObj.accumulate("protectionCode", protectionCode);
 		} catch (JSONException e) {
 			JSONMessage.log.error("Exception occured: ", e);
 		}

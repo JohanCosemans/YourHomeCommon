@@ -59,6 +59,6 @@ public class ImageButton extends Image {
 	@Override
 	public void addProperties() {
 		super.addProperties();
-		this.properties.put(PROTECTED, new Property(PropertyTypes.IMAGE, PROTECTED, "Protected", null));
+		this.properties.put(PROTECTED, new Property(PropertyTypes.BOOLEAN, PROTECTED, "Protected", null));
 	}
 }

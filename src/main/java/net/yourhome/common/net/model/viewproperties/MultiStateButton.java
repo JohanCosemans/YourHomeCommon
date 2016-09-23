@@ -31,19 +31,16 @@ import net.yourhome.common.base.enums.ViewTypes;
 
 public class MultiStateButton extends View {
 
-	public static String PROTECTED = "protected";
-
 	public MultiStateButton() {
 		super(ViewTypes.MULTI_STATE_BUTTON);
 	}
 
-	protected MultiStateButton(String id, ViewTypes viewType, String icon, String draggable, String title, Boolean protectedImage) {
+	protected MultiStateButton(String id, ViewTypes viewType, String icon, String draggable, String title) {
 		super(id, viewType, icon, draggable, title);
 	}
 
-	public MultiStateButton(String id, String icon, String draggable, String title, Boolean protectedImage) {
-		this(id, ViewTypes.MULTI_STATE_BUTTON, icon, draggable, title, protectedImage);
-		this.setAttributeValue(PROTECTED, protectedImage);
+	public MultiStateButton(String id, String icon, String draggable, String title) {
+		this(id, ViewTypes.MULTI_STATE_BUTTON, icon, draggable, title);
 	}
 
 	public void addState(String stateKey, String description, String value) {
@@ -52,6 +49,5 @@ public class MultiStateButton extends View {
 
 	@Override
 	public void addProperties() {
-		this.properties.put(PROTECTED, new Property(PropertyTypes.IMAGE, PROTECTED, "Protected", null));
 	}
 }

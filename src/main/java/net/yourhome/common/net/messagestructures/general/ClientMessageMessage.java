@@ -30,25 +30,39 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import net.yourhome.common.base.enums.ControllerTypes;
+import net.yourhome.common.base.enums.MessageLevels;
 import net.yourhome.common.base.enums.MessageTypes;
 import net.yourhome.common.net.messagestructures.JSONMessage;
 
 public class ClientMessageMessage extends ProtectedJSONMessage {
 	public String messageContent;
+	public MessageLevels messageLevel;
 
 	public ClientMessageMessage() {
 		this.controlIdentifiers.setControllerIdentifier(ControllerTypes.GENERAL);
 		this.type = MessageTypes.ClientMessage;
-	}
-
-	public ClientMessageMessage(JSONObject jsonObject) throws JSONException {
-		super(jsonObject);
-		this.messageContent = jsonObject.getString("messageContent");
+		this.messageLevel = MessageLevels.INFORMATION;
 	}
 
 	public ClientMessageMessage(String messageContent) {
 		this();
 		this.messageContent = messageContent;
+		this.messageLevel = MessageLevels.INFORMATION;
+	}
+
+	public ClientMessageMessage(String messageContent, MessageLevels messageLevel) {
+		this(messageContent);
+		this.messageLevel = messageLevel;
+	}
+
+	public ClientMessageMessage(JSONObject jsonObject) throws JSONException {
+		super(jsonObject);
+		this.messageContent = jsonObject.getString("messageContent");
+		try {
+			this.messageLevel = MessageLevels.valueOf(jsonObject.getString("messageLevel"));
+		} catch (JSONException e) {
+			this.messageLevel = MessageLevels.INFORMATION;
+		}
 	}
 
 	@Override
@@ -56,6 +70,7 @@ public class ClientMessageMessage extends ProtectedJSONMessage {
 		JSONObject object = super.serialize();
 		try {
 			object.put("messageContent", this.messageContent);
+			object.put("messageLevel", this.messageLevel);
 		} catch (JSONException e) {
 			JSONMessage.log.error("Exception occured: ", e);
 		}
