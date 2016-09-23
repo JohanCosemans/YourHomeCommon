@@ -33,7 +33,7 @@ import net.yourhome.common.base.enums.ControllerTypes;
 import net.yourhome.common.base.enums.MessageTypes;
 import net.yourhome.common.net.messagestructures.JSONMessage;
 
-public class ClientMessageMessage extends JSONMessage {
+public class ClientMessageMessage extends ProtectedJSONMessage {
 	public String messageContent;
 
 	public ClientMessageMessage() {

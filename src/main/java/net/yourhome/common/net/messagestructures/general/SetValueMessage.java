@@ -32,7 +32,7 @@ import org.json.JSONObject;
 import net.yourhome.common.base.enums.MessageTypes;
 import net.yourhome.common.net.messagestructures.JSONMessage;
 
-public class SetValueMessage extends JSONMessage {
+public class SetValueMessage extends ProtectedJSONMessage {
 
 	public SetValueMessage() {
 		this.type = MessageTypes.SetValue;

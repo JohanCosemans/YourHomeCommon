@@ -32,7 +32,7 @@ import org.json.JSONObject;
 import net.yourhome.common.base.enums.MessageTypes;
 import net.yourhome.common.net.messagestructures.JSONMessage;
 
-public class ActivationMessage extends JSONMessage {
+public class ActivationMessage extends ProtectedJSONMessage {
 
 	public ActivationMessage() {
 		this.type = MessageTypes.Activation;
@@ -49,10 +49,6 @@ public class ActivationMessage extends JSONMessage {
 	@Override
 	public JSONObject serialize() {
 		JSONObject returnObject = super.serialize();
-		/*
-		 * try { } catch (JSONException e) { log.error("Exception occured: ",e);
-		 * }
-		 */
 		return returnObject;
 	}
 }

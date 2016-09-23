@@ -32,8 +32,9 @@ import org.json.JSONObject;
 import net.yourhome.common.base.enums.ControllerTypes;
 import net.yourhome.common.base.enums.MessageTypes;
 import net.yourhome.common.net.messagestructures.JSONMessage;
+import net.yourhome.common.net.messagestructures.general.ProtectedJSONMessage;
 
-public class HttpCommandMessage extends JSONMessage {
+public class HttpCommandMessage extends ProtectedJSONMessage {
 	/*
 	 * public String httpMethod; //get,post,delete,put public String
 	 * messageType; //e.g. application/json public String messageBody; // e.g. {

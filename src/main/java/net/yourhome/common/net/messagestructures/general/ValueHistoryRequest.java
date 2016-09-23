@@ -34,7 +34,7 @@ import net.yourhome.common.base.enums.zwave.DataHistoryOperations;
 import net.yourhome.common.base.enums.zwave.DataHistoryPeriodTypes;
 import net.yourhome.common.net.messagestructures.JSONMessage;
 
-public class ValueHistoryRequest extends JSONMessage {
+public class ValueHistoryRequest extends ProtectedJSONMessage {
 
 	public int historyAmount = 10;
 	public int offset = 0;
