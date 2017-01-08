@@ -3,6 +3,7 @@ package net.yourhome.common.net.messagestructures.general;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import net.yourhome.common.base.enums.MessageTypes;
 import net.yourhome.common.net.messagestructures.JSONMessage;
 
 public class ProtectedJSONMessage extends JSONMessage {
@@ -11,7 +12,8 @@ public class ProtectedJSONMessage extends JSONMessage {
 	public String protectionCode = "";
 
 	public ProtectedJSONMessage() {
-		super();
+        super();
+        this.type = MessageTypes.ProtectedJSON;
 	}
 
 	public ProtectedJSONMessage(JSONObject jsonObject) throws JSONException {

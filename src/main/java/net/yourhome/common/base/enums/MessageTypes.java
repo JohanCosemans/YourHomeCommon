@@ -37,6 +37,7 @@ import net.yourhome.common.net.messagestructures.general.ActivationMessage;
 import net.yourhome.common.net.messagestructures.general.ClientMessageMessage;
 import net.yourhome.common.net.messagestructures.general.ClientNotificationMessage;
 import net.yourhome.common.net.messagestructures.general.GCMRegistrationMessage;
+import net.yourhome.common.net.messagestructures.general.ProtectedJSONMessage;
 import net.yourhome.common.net.messagestructures.general.SetValueMessage;
 import net.yourhome.common.net.messagestructures.general.ValueChangedMessage;
 import net.yourhome.common.net.messagestructures.general.ValueHistoryMessage;
@@ -55,7 +56,16 @@ import net.yourhome.common.net.messagestructures.radio.RadioOnOffMessage;
 import net.yourhome.common.net.messagestructures.thermostat.SetAwayMessage;
 
 public enum MessageTypes implements EnumConverter<String, MessageTypes> {
-	JSON("JSON", SetValueMessage.class), SetValue("SetValue", SetValueMessage.class), Activation("Activation", ActivationMessage.class), ValueChanged("ValueChanged", ValueChangedMessage.class), ValueHistory("ValueHistory", ValueHistoryMessage.class), ValueHistoryRequest("ValueHistoryRequest", ValueHistoryRequest.class), ClientMessage("ClientMessage", ClientMessageMessage.class), ClientNotification("ClientNotification", ClientNotificationMessage.class), GCMRegistration("GCMRegistration", GCMRegistrationMessage.class),
+	JSON("JSON", SetValueMessage.class),
+    ProtectedJSON("ProtectedJSON", ProtectedJSONMessage.class),
+    SetValue("SetValue", SetValueMessage.class),
+    Activation("Activation", ActivationMessage.class),
+    ValueChanged("ValueChanged", ValueChangedMessage.class),
+    ValueHistory("ValueHistory", ValueHistoryMessage.class),
+    ValueHistoryRequest("ValueHistoryRequest", ValueHistoryRequest.class),
+    ClientMessage("ClientMessage", ClientMessageMessage.class),
+    ClientNotification("ClientNotification", ClientNotificationMessage.class),
+    GCMRegistration("GCMRegistration", GCMRegistrationMessage.class),
 
 	// IP Camera
 	Snapshot("Snapshot", SnapshotMessage.class), SnapshotRequest("SnapshotRequest", SnapshotRequestMessage.class),

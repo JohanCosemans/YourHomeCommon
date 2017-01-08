@@ -94,6 +94,8 @@ public enum ValueTypes implements EnumConverter<String, ValueTypes> {
 			"music_album_image"
 	), MUSIC_TRACK_DISPLAY(
 			"music_track_display"
+	), PAGE_NAVIGATION(
+			"page_navigation"
 	),
 
 	/* Trigger types */
