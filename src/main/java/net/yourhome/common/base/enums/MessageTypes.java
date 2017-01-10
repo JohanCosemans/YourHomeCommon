@@ -29,19 +29,11 @@ package net.yourhome.common.base.enums;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import net.yourhome.common.net.messagestructures.general.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import net.yourhome.common.net.messagestructures.JSONMessage;
-import net.yourhome.common.net.messagestructures.general.ActivationMessage;
-import net.yourhome.common.net.messagestructures.general.ClientMessageMessage;
-import net.yourhome.common.net.messagestructures.general.ClientNotificationMessage;
-import net.yourhome.common.net.messagestructures.general.GCMRegistrationMessage;
-import net.yourhome.common.net.messagestructures.general.ProtectedJSONMessage;
-import net.yourhome.common.net.messagestructures.general.SetValueMessage;
-import net.yourhome.common.net.messagestructures.general.ValueChangedMessage;
-import net.yourhome.common.net.messagestructures.general.ValueHistoryMessage;
-import net.yourhome.common.net.messagestructures.general.ValueHistoryRequest;
 import net.yourhome.common.net.messagestructures.http.HttpCommandMessage;
 import net.yourhome.common.net.messagestructures.ipcamera.SnapshotMessage;
 import net.yourhome.common.net.messagestructures.ipcamera.SnapshotRequestMessage;
@@ -60,6 +52,7 @@ public enum MessageTypes implements EnumConverter<String, MessageTypes> {
     ProtectedJSON("ProtectedJSON", ProtectedJSONMessage.class),
     SetValue("SetValue", SetValueMessage.class),
     Activation("Activation", ActivationMessage.class),
+    VoiceActivation("VoiceActivation", VoiceActivationMessage.class),
     ValueChanged("ValueChanged", ValueChangedMessage.class),
     ValueHistory("ValueHistory", ValueHistoryMessage.class),
     ValueHistoryRequest("ValueHistoryRequest", ValueHistoryRequest.class),
