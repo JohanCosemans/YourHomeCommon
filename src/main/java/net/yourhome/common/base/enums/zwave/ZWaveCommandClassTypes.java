@@ -120,6 +120,8 @@ public enum ZWaveCommandClassTypes implements EnumConverter<Byte, ZWaveCommandCl
 			(byte) 0x9b
 	), Mark(
 			(byte) 0xEF
+	), CentralScene(
+			(byte) 0x5B
 	), Unknown(
 			(byte) 0
 	);
