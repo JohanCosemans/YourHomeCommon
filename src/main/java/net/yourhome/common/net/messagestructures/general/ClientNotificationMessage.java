@@ -60,8 +60,8 @@ public class ClientNotificationMessage extends JSONMessage {
 		super(jsonObject);
 	}
 
-	public Map<String, String> getMessageMap() {
-		Map<String, String> returnmap = new HashMap<String, String>();
+	public Map<String, Object> getMessageMap() {
+		Map<String, Object> returnmap = new HashMap<String, Object>();
 		returnmap.put("title", this.title);
 		returnmap.put("message", this.message);
 		returnmap.put("imagePath", this.imagePath);
