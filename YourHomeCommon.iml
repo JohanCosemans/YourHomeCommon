@@ -31,5 +31,7 @@
     <orderEntry type="library" exported="" name="commons-lang3-3.4" level="project" />
     <orderEntry type="library" exported="" name="commons-logging-1.2" level="project" />
     <orderEntry type="library" exported="" name="log4j-1.2.17" level="project" />
+    <orderEntry type="library" exported="" name="commons-codec-1.10" level="project" />
+    <orderEntry type="library" exported="" name="YourHomeCommon.YourHome-Common-1.0-SNAPSHOT" level="project" />
   </component>
 </module>

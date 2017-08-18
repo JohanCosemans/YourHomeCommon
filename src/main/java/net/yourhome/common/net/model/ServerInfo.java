@@ -39,6 +39,7 @@ public class ServerInfo {
 	private Integer port;
 	private Map<String, Configuration> configurations;
 	private String version;
+	private boolean secured;
 
 	public ServerInfo() {
 		this.configurations = new HashMap<String, Configuration>();
@@ -48,6 +49,10 @@ public class ServerInfo {
 		this();
 		this.name = jsonObject.getString("name");
 		this.port = jsonObject.getInt("port");
+        try {
+            this.secured = jsonObject.getBoolean("secured");
+        } catch (JSONException e) {
+        }
 		try {
 			this.version = jsonObject.getString("version");
 		} catch (JSONException e) {
@@ -67,6 +72,7 @@ public class ServerInfo {
 		jsonObject.put("name", this.name);
 		jsonObject.put("port", this.port);
 		jsonObject.put("version", this.version);
+		jsonObject.put("secured", this.secured);
 		JSONObject configurationsMap = new JSONObject();
 		for (String configFileName : this.configurations.keySet()) {
 			configurationsMap.put(configFileName, this.configurations.get(configFileName).serialize());
@@ -135,4 +141,11 @@ public class ServerInfo {
 		this.version = version;
 	}
 
+    public boolean isSecured() {
+        return secured;
+    }
+
+    public void setSecured(boolean secured) {
+        this.secured = secured;
+    }
 }
