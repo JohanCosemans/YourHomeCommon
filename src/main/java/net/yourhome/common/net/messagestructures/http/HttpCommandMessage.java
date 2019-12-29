@@ -43,6 +43,7 @@ public class HttpCommandMessage extends ProtectedJSONMessage {
 	 * // e.g. XBMC Title public int id; public int parentNodeId;
 	 */
 	public HttpCommand httpCommand;
+	public Integer responseCode;
 	public String response;
 
 	public HttpCommandMessage() {
