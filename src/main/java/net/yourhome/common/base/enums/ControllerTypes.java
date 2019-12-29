@@ -27,7 +27,7 @@
 package net.yourhome.common.base.enums;
 
 public enum ControllerTypes implements EnumConverter<String, ControllerTypes> {
-	SPOTIFY("spotify"), ZWAVE("zwave"), RADIO("radio"), HTTP("http"), GENERAL("general"), IPCAMERA("ipcamera"), THERMOSTAT("thermostat"), PHILIPS_HUE("philips_hue"), UNKNOWN("unknown"), DEMO("demo");
+	SPOTIFY("spotify"), ZWAVE("zwave"), RADIO("radio"), HTTP("http"), GENERAL("general"), IPCAMERA("ipcamera"), THERMOSTAT("thermostat"), PHILIPS_HUE("philips_hue"), UNKNOWN("unknown"), DEMO("demo"),IKEA("IKEA");
 
 	private final String value;
 
